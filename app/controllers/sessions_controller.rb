@@ -19,15 +19,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.auth(params[:session][:login],params[:session][:password])
-    
+    @session = Session.login(params[:session][:login],params[:session][:password])
     respond_to do |format|
-      if user
-        @session = Session.create(:user=>user)
+      if @session
         session[:curr_session] = @session.id
         format.html { redirect_to( '/', :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.xml  { render :xml => @user, :status => :created, :location => @session.user }
       else
+        @session = Session.new
         format.html { render :action => "new" }
       end
     end
