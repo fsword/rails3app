@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   def destroy
     @session = Session.find(session[:curr_session])
     @session.destroy if @sessin
-    session[:curr_session]=nil
+    session.clear
     flash[:notice] = "Successfully logged out."
     redirect_to login_path, :format => params[:format]
   end
