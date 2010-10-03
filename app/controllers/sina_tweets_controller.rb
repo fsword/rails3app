@@ -1,7 +1,6 @@
-require 'oauth/consumer'
 class SinaTweetsController < ApplicationController
 
-  before_filter :oauth_sina
+#  before_filter :oauth_sina
 
   def initialize
     api_key = "0ce4a109569fb71726ade31c03df2545"
@@ -22,12 +21,8 @@ class SinaTweetsController < ApplicationController
   end
 
   def index
-    @response = access_token.post "http://api.douban.com/miniblog/saying",
-      %Q{<?xml version='1.0' encoding='UTF-8'?>
-<entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:db="http://www.douban.com/xmlns/">
-<content>今天试验一下 oauth  #{Time.now}</content>
-</entry>},  {"Content-Type" =>  "application/atom+xml"}
-    render :text => @response.body
+    response = access_token.get 'http://api.douban.com/people/%40me'
+    render :text => response.body
   end
 
   def create
@@ -44,11 +39,13 @@ class SinaTweetsController < ApplicationController
   end
 
   def access_token
-    @access_token = session[:access_token]
-    if @access_token.nil?
-      @access_token = session[:request_token].get_access_token
-      session[:access_token] = @access_token
-    end
-    @access_token
+    @access_token = OAuth::AccessToken.new(@consumer,'1136c6e889c2b6e633a454b99d4824b2','a0c31192d83eb2ba')
+#    @access_token = session[:access_token]
+#    if @access_token.nil?
+#      session[:access_token] = session[:request_token].get_access_token
+#      @access_token = session[:access_token]
+#      debugger
+#    end
+#    @access_token
   end
 end

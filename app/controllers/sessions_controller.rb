@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @session = Session.find(session[:curr_session])
+    @session = Session.find_by_id(session[:curr_session])
     @session.destroy if @sessin
     session.clear
     flash[:notice] = "Successfully logged out."

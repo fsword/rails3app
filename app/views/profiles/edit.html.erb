@@ -1,0 +1,16 @@
+<%= form_for(@profile,:url => :profile) do |f| %>
+  <p><%=flash[:notice] %></p>
+用户：
+<div>
+  <%=@profile.user.email %>
+</div>
+  <div class="field">
+    <%= f.label :self_desc %><br />
+    <%= f.text_field :self_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%=link_to '显示', profile_path %>
+<%=link_to '返回', :controller => 'welcome' %>

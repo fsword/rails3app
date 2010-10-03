@@ -5,6 +5,6 @@ class Session < ActiveRecord::Base
   
   def self.login login,password
     user = User.auth login, password
-    Session.create(:user=>@user) if user
+    Session.create(:user=> user) if user
   end
 end

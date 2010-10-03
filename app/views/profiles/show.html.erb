@@ -1,0 +1,11 @@
+用户：
+<p>
+  <%=@profile.user.email %>
+</p>
+自我描述：
+<p>
+  <%=@profile.self_desc %>
+</p>
+<%=link_to '编辑', edit_profile_path %>
+<%=link_to '与豆瓣同步', :controller => 'oauth', :action => 'douban' %>
+<%=link_to '返回', :controller => 'welcome' %>
