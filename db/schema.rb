@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101002174325) do
+ActiveRecord::Schema.define(:version => 20101017191303) do
 
   create_table "douban_agents", :force => true do |t|
     t.integer  "user_id"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(:version => 20101002174325) do
     t.string   "request_secret"
     t.string   "access_key"
     t.string   "access_secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "oauth_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "request_key"
+    t.string   "request_secret"
+    t.string   "access_key"
+    t.string   "access_secret"
+    t.string   "site"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

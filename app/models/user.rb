@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
+  add_oauth
 
   has_one :profile
-  has_one :douban_agent
 
   has_many :sessions
 
