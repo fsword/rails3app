@@ -7,4 +7,4 @@ douban:
   authorize_path: /service/auth/authorize
   signature_method: HMAC-SHA1
   scheme: header
-  realm: http//freebuilder.3322.org:3000/
+  realm: http//localhost:3000/
