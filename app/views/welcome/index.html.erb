@@ -1,4 +1,13 @@
 welcome !
 <%=link_to "profile", profile_path %>
-<%=link_to "开通我的豆瓣同步功能", :controller => 'oauth', :action => 'douban' %>
-<%=link_to "开通我的sina微博同步功能", :controller => 'oauth', :action => 'sina' %>
+<% if current_user.douban? %>
+  <%=link_to "取消我的豆瓣同步功能", :controller => 'oauth', :action => 'cancel', :site => 'douban' %>
+<% else %>
+  <%=link_to "开通我的豆瓣同步功能", :controller => 'oauth', :action => 'douban' %>
+<% end %>
+
+<% if current_user.sina? %>
+  <%=link_to "取消我的sina微博同步功能", :controller => 'oauth', :action => 'cancel', :site => 'sina' %>
+<% else %>
+  <%=link_to "开通我的sina微博同步功能", :controller => 'oauth', :action => 'sina' %>
+<% end %>
